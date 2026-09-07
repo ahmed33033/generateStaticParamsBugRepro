@@ -1,28 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Playfair_Display } from "next/font/google";
-import "./globals.css";
-import { cn } from "@/lib/utils";
-import { Navbar } from "@/components/navbar";
-import { MainSearch } from "@/components/MainSearch";
-import Footer from "@/components/footer";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -35,24 +11,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn(
-        "min-h-svh flex flex-col p-8 items-center",
-        "antialiased",
-        geistSans.variable,
-        geistMono.variable,
-        "font-sans",
-        inter.variable,
-        playfairDisplay.variable
-      )}
-    >
-      <body className="flex flex-col grow w-[80svw] max-w-4xl">
-        <Navbar />
-        <MainSearch />
-        {children}
-        <Footer />
-      </body>
+    <html lang="en">
+      <body className="flex flex-col grow w-[80svw] max-w-4xl">{children}</body>
     </html>
   );
 }

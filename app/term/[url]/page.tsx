@@ -1,4 +1,3 @@
-import { CardTabber } from "@/components/definition_card/card_tabber";
 import { getOutputTerms, getOutputTerm } from "@/lib/terms";
 
 export function generateStaticParams() {
@@ -15,11 +14,8 @@ export default async function TermPage({
   params: Promise<{ url: string }>;
 }) {
   const { url } = await params;
+  console.log("woohoo" + url);
   const outputTerm = getOutputTerm(url)!;
 
-  return (
-    <>
-      <CardTabber outputTerm={outputTerm} />
-    </>
-  );
+  return <div>hi</div>;
 }

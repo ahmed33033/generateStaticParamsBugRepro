@@ -1,54 +1,10 @@
-![The Simple AI Dictionary Homepage](/public/readme/homepage-03-05-26.png)
+# generateStaticParams Bug Reproduction
 
-A simple dictionary that defines the AI buzzwords that've been buzzing you crazy!
+start dev server with `pnpm dev`, then try navigating to the 2 different pages in different orders.
 
-## Why the Dictionary?
+1. first, start by navigating to `/nospace`, then back to home, then to `/with space`.
+2. then try navigating to `/with space` from home directly
 
-GenAI is a liminal space. It's changing rapidly. As a result, new terms are being added continiously.
+then, observe the bug: `Page "/[url]/page" is missing param "/[url]" in "generateStaticParams()", which is required with "output: export" config.`
 
-### The Problem
-
-Understanding new AI "buzzwords" is not always an easy task. Definitions can be too abstract and fail to describe how these terms are actually being used.
-
-### The Solution
-
-A simple, straightforwad, community-driven dictionary that puts a real definition to AI buzzwords.
-
-Additionally, it provides 2 levels of definitions:
-
-- A **general** definition suitable for everybody!
-- A **software** definition suitable for software folks (and others familiar with the AI space).
-
----
-
-## Contribute!
-
-There's a variety of ways you can contribute to the dictionary!
-
-### Word of the Day
-
-If you want to suggest a word of the day, simply open up a pull request with an edit to: `lib/term_of_the_day.ts`!
-
-### Add a New Term
-
-If you want to add a new term to the dictionary, open up an issue with the term in the title, and your suggested "General" and "Software" definition in the body of the issue.
-
-Example Issue:
-
-```yml
-----------------------------------------
-| New Term: Vibe-coding                |
-|--------------------------------------|
-|                                      |
-| General definition: ....             |
-|                                      |
-| Software definition: ...             |
-|                                      |
-|--------------------------------------|
-```
-
-This will help us open up the floor for discussion, before making a pull request.
-
-### Other Stuff
-
-Just open up an issue with any other suggestions!
+also notice that the `pnpm build` runs normally, without any errors.

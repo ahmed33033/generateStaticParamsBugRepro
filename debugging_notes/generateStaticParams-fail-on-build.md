@@ -65,3 +65,13 @@ when using raw name ("vibe code"), it errors out in dev and prod
 when encoding before sending in, decoding in generateStaticParams, and using directly in defaultExport, it works in prod but not dev
 
 alright i think i want to simplify the project
+
+---
+
+## after simplifying
+
+alright i think we're closer to the root of the bug
+
+i checked the .next folder, and the prerender-manifest.json doesnt generate until one of the slugs from `generateStaticPages` is hit. issue is, with normal slugs, on a page hit, the prerender-manifest genereates accordingly, and all slugs can be accessed without issue. the problem becomes when trying to access one of the slugs with a weird character like a space (which needs to be encoded) directly, before the prerender-manifest.json is generated, which causes page miss issue
+
+and yes this only happens with output = export, without it, it works like normal
